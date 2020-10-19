@@ -162,13 +162,13 @@ exports.rewardUpdate = [
 							if(foundReward.user.toString() !== req.user._id){
 								return apiResponse.unauthorizedResponse(res, "You are not authorized to do this operation.");
 							}else{
-								//update book.
+								//update reward.
 								Reward.findByIdAndUpdate(req.params._id, reward, {},function (err) {
 									if (err) { 
 										return apiResponse.ErrorResponse(res, err); 
 									}else{
-										let rewardData = new RewardData(book);
-										return apiResponse.successResponseWithData(res,"Book update Success.", rewardData);
+										let rewardData = new RewardData(reward);
+										return apiResponse.successResponseWithData(res,"Reward update Success.", rewardData);
 									}
 								});
 							}
@@ -184,7 +184,7 @@ exports.rewardUpdate = [
 ];
 
 /**
- * Book Delete.
+ * Reward Delete.
  * 
  * @param {string}      id
  * 
