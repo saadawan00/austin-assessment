@@ -9,7 +9,7 @@ var apiResponse = require("./helpers/apiResponse");
 var cors = require("cors");
 
 // DB connection
-var MONGODB_URL = "mongodb+srv://user:admin1234@cluster0.jlcsj.mongodb.net/user?retryWrites=true&w=majority";
+var MONGODB_URL = process.env.MONGODB_URL;
 var mongoose = require("mongoose");
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
 	//don't show the log when it is test
