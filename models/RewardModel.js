@@ -8,7 +8,7 @@ var RewardSchema = new Schema({
 	otherPersonName: {type: String, required: true},
 	photo: {type: String, required: false},
 	description: {type: String, required: true},
-	status: {type: Number, required: true},
+	status: {type: String, required: true},
 }, {timestamps: true});
 
 module.exports = mongoose.model("Reward", RewardSchema);
