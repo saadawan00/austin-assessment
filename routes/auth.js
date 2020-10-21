@@ -5,7 +5,6 @@ var router = express.Router();
 
 router.post("/register", AuthController.register);
 router.post("/login", AuthController.login);
-router.post("/verify-otp", AuthController.verifyConfirm);
-router.post("/resend-verify-otp", AuthController.resendConfirmOtp);
+router.get("/getAllUsers", AuthController.getAllUsers);
 
 module.exports = router;
