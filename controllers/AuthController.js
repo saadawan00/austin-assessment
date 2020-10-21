@@ -70,32 +70,15 @@ exports.register = [
 							lastName: user.lastName,
 							email: user.email
 						};
+						const jwtPayload = userData;
+						const jwtData = {
+							expiresIn: process.env.JWT_TIMEOUT_DURATION,
+						};
+						const secret = process.env.JWT_SECRET;
+						//Generated JWT token with Payload and secret.
+						userData.token = jwt.sign(jwtPayload, secret, jwtData);
 						return apiResponse.successResponseWithData(res,"Registration Success.", userData);
 					});
-					// // Html email body
-					// let html = "<p>Please Confirm your Account.</p><p>OTP: "+otp+"</p>";
-					// // Send confirmation email
-					// mailer.send(
-					// 	constants.confirmEmails.from, 
-					// 	req.body.email,
-					// 	"Confirm Account",
-					// 	html
-					// ).then(function(){
-					// 	// Save user.
-					// 	user.save(function (err) {
-					// 		if (err) { return apiResponse.ErrorResponse(res, err); }
-					// 		let userData = {
-					// 			_id: user._id,
-					// 			firstName: user.firstName,
-					// 			lastName: user.lastName,
-					// 			email: user.email
-					// 		};
-					// 		return apiResponse.successResponseWithData(res,"Registration Success.", userData);
-					// 	});
-					// }).catch(err => {
-					// 	console.log(err);
-					// 	return apiResponse.ErrorResponse(res,err);
-					// }) ;
 				});
 			}
 		} catch (err) {
