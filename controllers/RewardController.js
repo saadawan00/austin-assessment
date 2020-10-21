@@ -15,6 +15,8 @@ function RewardData(data) {
 	this.photo = data.photo;
 	this.description = data.description;
 	this.status = data.status;
+	this.ownerEmail = data.ownerEmail;
+	this.otherPersonEmail = data.otherPersonEmail;
 }
 
 /**
@@ -92,12 +94,14 @@ exports.rewardStore = [
 		try {
 			const errors = validationResult(req);
 			var reward = new Reward(
-                {   
-                    ownerName: req.body.ownerName,
-                    favorType: req.body.favorType,                    
-                    otherPersonName: req.body.otherPersonName,                    
-                    description: req.body.description,
-                    status: req.body.status
+				{   
+					ownerName: req.body.ownerName,
+					favorType: req.body.favorType,                    
+					otherPersonName: req.body.otherPersonName,                    
+					description: req.body.description,
+					status: req.body.status,
+					ownerEmail: req.body.ownerEmail,
+					otherPersonEmail: req.body.otherPersonEmail
 				});
 
 			if (!errors.isEmpty()) {
@@ -144,7 +148,9 @@ exports.rewardUpdate = [
                     favorType: req.body.favorType,                    
                     otherPersonName: req.body.otherPersonName,                    
                     description: req.body.description,
-                    status: req.body.status
+                    status: req.body.status,
+					ownerEmail: req.body.ownerEmail,
+					otherPersonEmail: req.body.otherPersonEmail
 				});
 
 			if (!errors.isEmpty()) {
