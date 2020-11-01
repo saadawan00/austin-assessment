@@ -2,6 +2,8 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
+// Declaring schema for Leaderboard
+
 var LeaderSchema = new Schema({
 	names: {type: String, required: true},
 	activity: {type: String, required: true},

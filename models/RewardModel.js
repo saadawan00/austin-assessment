@@ -2,6 +2,8 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
+// Declaring schema for Favour
+
 var RewardSchema = new Schema({
 	ownerName: {type: String, required: true},
 	favorType: {type: String, required: true},

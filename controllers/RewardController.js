@@ -82,6 +82,7 @@ exports.rewardDetail = [
  * @returns {Object}
  */
 exports.rewardStore = [
+	// Following are the validation checks made on the data recieved from the Client side.
 	auth,
 	body("ownerName", "Owner name must not be empty.").isLength({ min: 1 }).trim(),
 	body("favorType", "Favor Type must not be empty.").isLength({ min: 1 }).trim(),
@@ -132,6 +133,7 @@ exports.rewardStore = [
  * @returns {Object}
  */
 exports.rewardUpdate = [
+	// Following are the validation checks made on the data recieved from the Client side.
 	auth,
 	body("ownerName", "Owner name must not be empty.").isLength({ min: 1 }).trim(),
 	body("favorType", "Favor Type must not be empty.").isLength({ min: 1 }).trim(),
@@ -171,8 +173,10 @@ exports.rewardUpdate = [
 								//update reward.
 								Reward.findByIdAndUpdate(req.params._id, reward, {},function (err) {
 									if (err) { 
+										// If the favour record with particular id doesn't exist, error will be thrown.
 										return apiResponse.ErrorResponse(res, err); 
 									}else{
+										// If the favour record with particular id exists, successfully update that record in the DB.
 										let rewardData = new RewardData(reward);
 										return apiResponse.successResponseWithData(res,"Reward update Success.", rewardData);
 									}
@@ -208,11 +212,13 @@ exports.rewardDelete = [
 				if(foundReward === null){
 					return apiResponse.notFoundResponse(res,"Reward not exists with this id");
 				}else{
-                    //delete reward.
+                    // delete favour.
                     Reward.findByIdAndRemove(req.params.id,function (err) {
                         if (err) { 
+							// If the favour record with particular id doesn't exist, error will be thrown.
                             return apiResponse.ErrorResponse(res, err); 
                         }else{
+							// If the favour record with particular id exists, successfully delete that record from the DB.
                             return apiResponse.successResponse(res,"Reward delete Success.");
                         }
                     });
